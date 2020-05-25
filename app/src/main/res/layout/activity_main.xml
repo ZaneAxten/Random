@@ -10,18 +10,8 @@
     <FrameLayout
         android:id="@+id/fragment_container"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_above="@id/bottom_navigation" />
+        android:layout_height="match_parent" />
 
-    <com.google.android.material.bottomnavigation.BottomNavigationView
-        android:id="@+id/bottom_navigation"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:background="@color/colorPrimary"
-        app:itemIconTint="@color/colorAccent"
-        app:itemTextColor="@color/colorAccent"
-        app:menu="@menu/bottom_navigation" />
 
     <ImageView
         android:id="@+id/imageView"
@@ -34,9 +24,19 @@
         android:id="@+id/button"
         android:layout_width="match_parent"
         android:layout_height="75dp"
-        android:layout_above="@id/bottom_navigation"
+        android:layout_alignParentBottom="true"
         android:backgroundTint="@color/colorButton"
         android:text="Let's goooooo"
+        android:textColor="@color/colorPrimary" />
+
+    <Button
+        android:id="@+id/button_open"
+        android:layout_width="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_height="75dp"
+        android:layout_above="@id/button"
+        android:backgroundTint="@color/colorHeadspace"
+        android:text="Open headpsace"
         android:textColor="@color/colorPrimary" />
 
 </RelativeLayout>

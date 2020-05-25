@@ -4,6 +4,7 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
@@ -15,6 +16,8 @@ import com.google.android.material.bottomnavigation.BottomNavigationView;
 import java.util.Random;
 
 public class MainActivity extends AppCompatActivity {
+    
+private Button bopen;
 
     ImageView imageView;
 
@@ -27,11 +30,15 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        BottomNavigationView bottomNav = findViewById(R.id.bottom_navigation);
-        bottomNav.setOnNavigationItemSelectedListener(navListener);
+        bopen = (Button) findViewById(R.id.button_open);
+        bopen.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i=getPackageManager().getLaunchIntentForPackage("com.getsomeheadspace.android");
+                startActivity(i);
+            }
+        });
 
-        getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
-                new MaleFragment()).commit();
 
         imageView = (ImageView) findViewById(R.id.imageView);
 
@@ -39,12 +46,34 @@ public class MainActivity extends AppCompatActivity {
 
         r = new Random();
 
-        final Integer [] images = {
+        final Integer[] images = {
                 R.drawable.male_1,
                 R.drawable.male_2,
                 R.drawable.male_3,
                 R.drawable.male_4,
                 R.drawable.male_5,
+                R.drawable.male_6,
+                R.drawable.male_7,
+                R.drawable.male_8,
+                R.drawable.male_9,
+                R.drawable.male_10,
+                R.drawable.male_11,
+                R.drawable.male_12,
+                R.drawable.male_13,
+                R.drawable.male_14,
+                R.drawable.male_15,
+                R.drawable.female_12,
+                R.drawable.female_2,
+                R.drawable.female_3,
+                R.drawable.female_4,
+                R.drawable.female_5,
+                R.drawable.female_6,
+                R.drawable.female_7,
+                R.drawable.female_8,
+                R.drawable.female_9,
+                R.drawable.female_10,
+                R.drawable.female_11,
+                R.drawable.female_12,
         };
 
         button.setOnClickListener(new View.OnClickListener() {
@@ -57,30 +86,4 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-    private BottomNavigationView.OnNavigationItemSelectedListener navListener =
-            new BottomNavigationView.OnNavigationItemSelectedListener() {
-                @Override
-                public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-                    Fragment selectedFragment = null;
-
-                    switch (item.getItemId()) {
-                        case R.id.nav_male:
-                            selectedFragment = new MaleFragment();
-                            break;
-
-                        case R.id.nav_female:
-                            selectedFragment = new FemaleFragment();
-                            break;
-
-                        case R.id.nav_whatever:
-                            selectedFragment = new WhateverFragment();
-                            break;
-                    }
-
-                    getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
-                            selectedFragment).commit();
-
-                    return true;
-                }
-            };
 }
